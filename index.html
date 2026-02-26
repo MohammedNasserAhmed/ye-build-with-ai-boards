@@ -1377,7 +1377,9 @@
   /* ---- Ripple effect on CTAs ---- */
   document.querySelectorAll('.cta-btn, .slider-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
-      if(this.tagName !== 'BUTTON') e.preventDefault();
+      // Allow links to open normally instead of preventing default
+      if(this.getAttribute('href') === '#') e.preventDefault();
+      
       const rect = this.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
